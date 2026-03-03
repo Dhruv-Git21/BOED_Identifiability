@@ -1,0 +1,31 @@
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.env
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Experiment outputs
+runs/
+results/
+data/
+*.log
+*.csv
+*.json
+*.png
+
+# Python
+*.egg
+*.zip
