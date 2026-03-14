@@ -45,15 +45,18 @@ class NonlinearANMSEM:
                     # Root node: identity
                     self.functions[node] = lambda x: np.zeros(len(x)) if isinstance(x, np.ndarray) else 0
                 else:
-                    # Nonlinear: sum of tanh
-                    def make_func(p):
+                    # Nonlinear: sum of tanh over given parent values
+                    # Note: the function operates directly on the provided
+                    # parent array, which is already subset to this node's parents.
+                    def make_func():
                         def f(X):
+                            # X has shape (n_samples, n_parents) or (n_parents,)
                             if X.ndim == 1:
-                                return np.tanh(np.sum(X[p]))
+                                return np.tanh(np.sum(X))
                             else:
-                                return np.tanh(np.sum(X[:, p], axis=1))
+                                return np.tanh(np.sum(X, axis=1))
                         return f
-                    self.functions[node] = make_func(parents)
+                    self.functions[node] = make_func()
         else:
             self.functions = functions
     
