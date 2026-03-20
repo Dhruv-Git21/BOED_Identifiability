@@ -1,0 +1,37 @@
+name: ablation_linear_policy_greedy_eig
+graph:
+  num_nodes: 5
+  expected_degree: 1.5
+  seed: 42
+sem:
+  sem_type: linear_gaussian
+  noise_std: 1.0
+  coeff_scale: 1.0
+  seed: 42
+data:
+  n_observational: 100
+  n_interventional_per_round: 50
+  n_rounds: 5
+  seed: 42
+inference:
+  n_particles: 50
+  n_mh_steps: 100
+  score_type: bge
+  use_constraint_based_prescreen: true
+  seed: 42
+design:
+  policy: greedy_eig
+  n_eig_samples: 10
+  restrict_to_ambiguous: true
+  ambiguity_threshold: 0.1
+  seed: 42
+identifiability:
+  structural_enabled: true
+  query_enabled: false
+  seed: 42
+evaluation:
+  compute_shd: true
+  compute_sid: false
+  compute_orientation_accuracy: true
+  seed: 42
+seed: 42
